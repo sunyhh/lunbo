@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.warp {
+				width: 1290px;
+				height: 345px;
+				background: url(img/xian/big.jpg);
+				margin: 0 auto;
+				margin-top: 50px;
+				text-align: center;
+			}
+			
+			.box {
+				position: relative;
+			}
+			
+			.box img {
+				width: 1290px;
+				height: 345px;
+			}
+			
+			.myul {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			li {
+				width: 75px;
+				height: 185px;
+				list-style: none;
+				float: left;
+				background: url(img/xian/figure.png);
+			}
+			
+			.li1 {
+				background-position: 0 0;
+			}
+			
+			.li2 {
+				background-position: -80px 0;
+			}
+			
+			.li3 {
+				background-position: -160px 0;
+			}
+			
+			.li4 {
+				background-position: 82px 0;
+				margin-left: 835px;
+			}
+			
+			.li5 {
+				background-position: 162px 0;
+			}
+			
+			.li6 {
+				background-position: 242px 0;
+			}
+			
+			a {
+				width: 75px;
+				height: 185px;
+				background: url(img/xian/figure.png);
+				display: none;
+			}
+			
+			.a1 {
+				background-position: 0 -197px;
+			}
+			
+			.a2 {
+				background-position: -80px -197px;
+			}
+			
+			.a3 {
+				background-position: -160px -197px;
+			}
+			
+			.a4 {
+				background-position: 82px -197px;
+			}
+			
+			.a5 {
+				background-position: 162px -197px;
+			}
+			
+			.a6 {
+				background-position: 242px -197px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var imgArr = ['img/xian/big1.jpg', 'img/xian/big2.jpg', 'img/xian/big3.jpg', 'img/xian/big6.jpg', 'img/xian/big5.jpg', 'img/xian/big4.jpg'];
+				var oLi = document.getElementsByTagName("li");
+				var oA = document.getElementsByTagName("a");
+				var oBox = document.getElementsByClassName("box")[0];
+				var oImg = document.getElementsByTagName("img")[0];
+
+				//设置定时器
+				var a = -1;
+				var timer = null;
+				timer = setInterval(autoPlay, 1000);
+
+				function autoPlay() {
+					a++;
+					if(a == 6) {
+						a = 0;
+					}
+					oImg.src = imgArr[a];
+					for(var j = 0; j < 6; j++) {
+						oA[j].style.display = 'none';
+					}
+					oA[a].style.display = 'block';
+				}
+
+				//清除定时器和开启定时器
+				oBox.onmouseover = function() {
+					clearInterval(timer);
+				}
+				oBox.onmouseout = function() {
+					timer = setInterval(autoPlay, 1000);
+				}
+
+				for(var b = 0; b < 6; b++) {
+					oLi[b].index = b;
+					oLi[b].onclick = function() {
+						for(var j = 0; j < 6; j++) {
+							oA[j].style.display = 'none';
+						}
+						oA[this.index].style.display = 'block';
+						oImg.src = imgArr[this.index];
+						a = this.index;
+					}
+				}
+
+				for(var i = 0; i < 6; i++) {
+					oLi[i].index = i;
+					oLi[i].onmouseover = function() {
+						for(var j = 0; j < 6; j++) {
+							oA[j].style.display = 'none';
+						}
+						oA[this.index].style.display = 'block';
+						a = this.index
+					}
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<div class="warp">
+				<div class="box">
+					<img src="img/xian/big1.jpg" />
+					<ul class="myul">
+						<li class="li1">
+							<a href="" class="a1"></a>
+						</li>
+						<li class="li2">
+							<a href="" class="a2"></a>
+						</li>
+						<li class="li3">
+							<a href="" class="a3"></a>
+						</li>
+						<li class="li4">
+							<a href="" class="a4"></a>
+						</li>
+						<li class="li5">
+							<a href="" class="a5"></a>
+						</li>
+						<li class="li6">
+							<a href="" class="a6"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

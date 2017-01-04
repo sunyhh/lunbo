@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Document</title>
+	<script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 575px;
+			height: 295px;
+			border: 3px solid red;
+			margin: 200px auto;
+			position: relative;
+		}
+		img{
+			width: 575px;
+			height: 295px;
+		}
+		li{
+			list-style: none;
+			float: left;
+		}
+		.num a{
+			display: block;
+			width: 20px;
+			height: 10px;
+			background: white;
+			margin-left: 5px;
+		}
+		.num{
+			position: absolute;
+			left: 10px;
+			bottom: 10px;
+		}
+		.img li{
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.num .active{
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var size=4;
+			var timer=null;
+			var num=0;
+			for(var i=0;i<size;i++){
+				
+				var img='<li><img src="img/'+('0'+(i+1))+'.jpg" alt="" title="" /></li>'
+				$('.img').append(img);
+			}
+			$('.img li').first().show();
+			$('.num li a').eq(0).addClass('active')
+			
+			//num鼠标移入
+			$('.num li').mouseover(function(){
+				$(this).children().addClass('active').parent().siblings().children().removeClass('active');
+				//$(this).siblings().children().removeClass('active');
+				var index=$(this).index();
+				$('.img li').eq(index).fadeIn(1000).siblings().fadeOut(1000);
+			});
+			timer=setInterval(move,1000)
+			function move(){
+				num++;
+				if(num==size){
+					num=0;
+				}
+				$('.num li').eq(num).children().addClass('active').parent().siblings().children().removeClass('active');
+				$('.img li').eq(num).fadeIn(1000).siblings().fadeOut(1000);
+			};
+			$('.box').hover(function(){
+					clearInterval(timer);
+				},function(){
+					timer=setInterval(move,1000);
+				})
+		});
+	</script>
+</head>
+<body>
+	<div class="box">
+		<ul class="img"></ul>
+		<ul class="num">
+			<li><a href="javascript:;"></a></li>
+			<li><a href="javascript:;"></a></li>
+			<li><a href="javascript:;"></a></li>
+			<li><a href="javascript:;"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

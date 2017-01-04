@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Document</title>
+	<script src="js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		li{
+			list-style: none;
+		}
+		
+		a{
+			text-decoration: none;
+		}
+		
+		.wrap{
+			width: 650px;
+			height: 295px;
+			margin: 200px auto;
+			/*background: yellow;*/
+			position: relative;
+			border: 1px solid rgba(0,0,0,0.2);
+		}
+		
+		.nav{
+			width: 650px;
+			height: 55px;
+			/*background: darkseagreen;*/
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		
+		.nav .menu{
+			width: 200px;
+			height:30px;
+			/*background: red;*/
+			margin: 15px auto;
+			color: #000;
+		}
+		
+		.menu span{
+			display: inline-block;
+			width: 60px;
+			height: 33px;
+			text-align: center;
+			font:18px/30px "微软雅黑";
+			cursor: pointer;
+		}
+		
+		.wrap .nav .p1{
+			display: block;
+			position: absolute;
+			top: 5px;
+			left: 10px;
+			font-size: 25px;
+		}
+		
+		.wrap .nav .more{
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			cursor: pointer;
+		}
+		
+		.two{
+			display: none;
+		}
+		
+		.three{
+			display: none;
+		}
+		
+		.one{
+			display: none;
+		}
+		
+		.main{
+			width: 650px;
+			height: 220px;
+			position: absolute;
+			margin-top: 55px;
+			/*background: red;*/
+		}
+		
+		.main ul li{
+			display: block;
+			height: 44px;
+			font: 16px/44px "微软雅黑";
+			border-bottom: 1px  dashed #000;
+			font-weight: 600;
+			position: relative;
+		}
+		
+		.main ul li a{
+			margin-left: 20px;
+		}
+		
+		.main span{
+			position: absolute;
+			display: block;
+			width: 10px;
+			height: 10px;
+			background: url(img/arrow.jpg) no-repeat;
+			left: 5px;
+			top:18px;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$('.main').children().eq(0).css('display','block');
+			
+			$('.menu').children().click(function(){
+				var index = $(this).index();
+				$('.main').children().eq(index).css('display','block').siblings().css('display','none');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="nav" id="header">
+			<p class="p1">最新动态</p>
+			<div class="menu" id="menu">
+				<span><a href="#">公告</a></span>
+				<span><a href="#">新闻</a></span>
+				<span><a href="#">活动</a></span>
+			</div>
+			<span class="more">MORE  +</span>
+		</div>
+		<div class="main" id="content">
+			<div class="one">
+				<ul>
+					<li><span class="span"></span><a href="#">[公告]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[公告]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[公告]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[公告]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[公告]全服12月3日7：00停机维护公告</a></li>
+				</ul>
+			</div>
+			<div class="two">
+				<ul>
+					<li><span class="span"></span><a href="#">[新闻]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[新闻]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[新闻]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[新闻]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[新闻]全服12月3日7：00停机维护公告</a></li>
+				</ul>
+			</div>
+			<div class="three">
+				<ul>
+					<li><span class="span"></span><a href="#">[活动]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[活动]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[活动]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[活动]全服12月3日7：00停机维护公告</a></li>
+					<li><span class="span"></span><a href="#">[活动]全服12月3日7：00停机维护公告</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>

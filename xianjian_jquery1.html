@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.warp {
+				width: 1290px;
+				height: 345px;
+				background: url(img/xian/big.jpg) center;
+				margin: 0 auto;
+				margin-top: 50px;
+				text-align: center;
+			}
+			
+			.box {
+				position: relative;
+				width: 1000px;
+				height: 345px;
+				margin: 0 auto;
+			}
+			
+			.box img {
+				position: relative;
+				top: 7px;
+			}
+			
+			.myul {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			li {
+				width: 75px;
+				height: 185px;
+				list-style: none;
+				float: left;
+				background: url(img/xian/figure.png);
+			}
+			
+			.li1 {
+				background-position: 0 0;
+			}
+			
+			.li2 {
+				background-position: -80px 0;
+			}
+			
+			.li3 {
+				background-position: -160px 0;
+			}
+			
+			.li4 {
+				background-position: 82px 0;
+				margin-left: 535px;
+			}
+			
+			.li5 {
+				background-position: 162px 0;
+			}
+			
+			.li6 {
+				background-position: 242px 0;
+			}
+			
+			a {
+				width: 75px;
+				height: 185px;
+				background: url(img/xian/figure.png);
+				display: none;
+			}
+			
+			.a1 {
+				background-position: 0 -197px;
+			}
+			
+			.a2 {
+				background-position: -80px -197px;
+			}
+			
+			.a3 {
+				background-position: -160px -197px;
+			}
+			
+			.a4 {
+				background-position: 82px -197px;
+			}
+			
+			.a5 {
+				background-position: 162px -197px;
+			}
+			
+			.a6 {
+				background-position: 242px -197px;
+			}
+			
+			.active {
+				display: block;
+			}
+		</style>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var imgArr = ['img/xian/big1.jpg', 'img/xian/big2.jpg', 'img/xian/big3.jpg', 'img/xian/big6.jpg', 'img/xian/big5.jpg', 'img/xian/big4.jpg'];
+				//设置定时器
+				var timer = null;
+				var a = -1;
+				timer = setInterval(autoPlay, 1000);
+
+				function autoPlay() {
+					a++;
+					if(a == 6) {
+						a = 0;
+					}
+					current(a);
+				}
+
+				function current(num) {
+					$("a").eq(num).addClass("active").parent().siblings().children().removeClass("active");
+					$("img").attr("src", imgArr[num]);
+				}
+
+				//开启和关闭定时器
+				$(".box").mouseover(function() {
+					clearInterval(timer);
+				});
+				$(".box").mouseout(function() {
+					timer = setInterval(autoPlay, 1000);
+				});
+
+				//点击事件
+				$("li").click(function() {
+					var index = $(this).index();
+					//alert(index);
+					//i=index-1;
+					//autoPlay();
+					current(index);
+					a = index;
+				});
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<div class="warp">
+				<div class="box">
+					<img src="img/xian/big1.jpg" />
+					<ul class="myul">
+						<li class="li1">
+							<a href="" class="a1"></a>
+						</li>
+						<li class="li2">
+							<a href="" class="a2"></a>
+						</li>
+						<li class="li3">
+							<a href="" class="a3"></a>
+						</li>
+						<li class="li4">
+							<a href="" class="a4"></a>
+						</li>
+						<li class="li5">
+							<a href="" class="a5"></a>
+						</li>
+						<li class="li6">
+							<a href="" class="a6"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+
+<!--布局的原理：
+	wrap中放置一张背景图片
+	box中有img和ul：img宽高和wrap一样
+	ul中的每个li都有一张背景图片，给背景图片background-position属性，让相应的li显示相应的图片
+	给第3个li一个marging-right属性让剩下的li靠右
+	li中有a标签，a标签的原理和li的原理一样，显示高亮图片，显示默认隐藏
+	
+	js：
+	img定时轮播；轮播时让相应的a标签显示
+	
+	点击事件也是让相应的img显示，让当前的a标签显示
+	
+-->
